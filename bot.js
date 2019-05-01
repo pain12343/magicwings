@@ -6,7 +6,7 @@ client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
 
-client.login('NTcyMzcyMjA3OTA1NTM4MDU5.XMlpDA.9UuSsJ5pnNevYnoS6pULklVnZjY');
+client.login('NTcyMzcyMjA3OTA1NTM4MDU5.XMlpDA.9UuSsJ5pnNevYnoS6pULklVnZj');
 
 client.on(`message`, msg => {
 const memelink = [""]
@@ -126,4 +126,4 @@ client.on("ready", () => {
     console.log("On " + client.guilds.size + " guilds.")
     console.log("With " + client.users.size + " members.")
 });
-client.login(process.env.BOT_TOKEN)
+client.login(NTcyMzcyMjA3OTA1NTM4MDU5.XMlpDA.9UuSsJ5pnNevYnoS6pULklVnZjY)
