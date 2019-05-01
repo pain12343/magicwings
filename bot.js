@@ -1,178 +1,129 @@
-const Discord = require('discord.js');
-const bot = new Discord.Client();
-const lastUse = new Set();
-const secondlastUse = new Set();
-const thirdlastUse = new Set();
-const token = 'hidden';
-const PREFIX = '++'
- 
-bot.on('ready', () =>{
-    console.log('This bot is online!');
+const Discord = require("discord.js");
+const client = new Discord.Client();
+const token = 'NTcyMzcyMjA3OTA1NTM4MDU5.XMlpDA.9UuSsJ5pnNevYnoS6pULklVnZjY'
+
+client.on('ready', () => {
+  console.log(`Logged in as ${client.user.tag}!`);
+});
+
+client.login('NTcyMzcyMjA3OTA1NTM4MDU5.XMlpDA.9UuSsJ5pnNevYnoS6pULklVnZjY');
+
+client.on(`message`, msg => {
+const memelink = [""]
+
+
+if (msg.content.startsWith(`-memes`)) {
+   msg.channel.send({file: memelink[Math.floor(Math.random() * memelink.length)]}).catch(err => {console.log(err)})
+}
 })
- 
-bot.on('message', message=>{
- 
-    let args = message.content.substring(PREFIX.length).split(" ");  
-   
-    switch(args[0]){
-        case 'ping':
-            message.channel.sendMessage('pong!')
-            break;
-        case 'gen':
-        if(lastUse.has(message.author.id)) {
-            message.reply("You must wait 5 minutes between uses of this command.")
-             return;
-        }else{
-            if(args[1] === 'fortnite'){
-                const embed = new Discord.RichEmbed()
-                    .setTitle('Account details:')
-                    .setColor(0x2E86C1)
-                    .addField('Fortnite', 'Test:Test')
-                    message.author.sendEmbed(embed);                
-                message.reply('Sent to your dms!')
-            }   else
-            if(args[1] === 'spotify'){
-                const embed = new Discord.RichEmbed()
-                    .setTitle('Account details:')
-                    .setColor(0x2E86C1)
-                    .addFiel
-                    d('Spotify', 'Test:Test')
-                    message.author.sendEmbed(embed);                
-                message.reply('Sent to your dms!')
-            }   else
-            if(args[1] === 'uplay'){
-                const embed = new Discord.RichEmbed()
-                    .setTitle('Account details:')
-                    .setColor(0x2E86C1)
-                    .addField('Uplay', 'Test:Test')
-                    message.author.sendEmbed(embed);                
-                message.reply('Sent to your dms!')
-            }else{
-                message.channel.sendMessage('Please use the commands "++gen fortnite" or "++gen spotify" or "++gen uplay"')
-                return;
-            }  
-            lastUse.add(message.author.id);
-            setTimeout(() => {
-            lastUse.add(message.author.id);
-            lastUse.delete(message.author.id);
-            }, 300000); };
-             break;  
-        case 'pgen':
-        if(secondlastUse.has(message.author.id)) {
-            message.reply("You must wait 7 minutes between uses of this command.")
-             return;            
-        }else{
-            if(args[1] === 'fortnite'){
-                const embed = new Discord.RichEmbed()
-                    .setTitle('Account details:')
-                    .setColor(0x2E86C1)
-                    .addField('Fortnite Premium', 'Test:Test')
-                    message.author.sendEmbed(embed);            
-                message.reply('Sent to your dms!')
-            }   else
-            if(args[1] === 'spotify'){
-                const embed = new Discord.RichEmbed()
-                    .setTitle('Account details:')
-                    .setColor(0x2E86C1)
-                    .addField('Spotify Premium', 'Test:Test')
-                message.author.sendEmbed(embed);                
-                message.reply('Sent to your dms!')
-            }   else
-            if(args[1] === 'uplay'){
-                const embed = new Discord.RichEmbed()
-                    .setTitle('Account details:')
-                    .setColor(0x2E86C1)
-                    .addField('Uplay Premium', 'Test:Test')
-                    message.author.sendEmbed(embed);                
-                message.reply('Sent to your dms!')
-            }else{
-                message.channel.sendMessage('Please use the commands "++pgen fortnite" or "++pgen spotify" or "++pgen uplay"')
-                return;
-            }
-            secondlastUse.add(message.author.id);
-            setTimeout(() => {
-            secondlastUse.add(message.author.id);
-            secondlastUse.delete(message.author.id);
-            }, 420000); };            
-            break;
-        case 'ugen':        
-        if  (thirdlastUse.has(message.author.id)) {
-            message.reply("You must wait 10 minutes between uses of this command.")
-             return;            
-        }else{            
-            if(args[1] === 'fortnite'){
-                const embed = new Discord.RichEmbed()
-                    .setTitle('Account details:')
-                    .setColor(0x2E86C1)
-                    .addField('Fortnite Ultra', 'Test:Test')
-                    message.author.sendEmbed(embed);
-                message.reply('Sent to your dms!');
-            }else
-            if(args[1] === 'spotify'){
-                const embed = new Discord.RichEmbed()
-                    .setTitle('Account details:')
-                    .setColor(0x2E86C1)
-                    .addField('Spotify Ultra', 'Test:Test')
-                    message.author.sendEmbed(embed);                
-                message.reply('Sent to your dms!');
-            }else
-            if(args[1] === 'uplay'){
-                const embed = new Discord.RichEmbed()
-                    .setTitle('Account details:')
-                    .setColor(0x2E86C1)
-                    .addField('Uplay Ultra', 'Test:Test')
-                    message.author.sendEmbed(embed);                
-                message.reply('Sent to your dms!')
-            }else{
-                message.channel.sendMessage('Please use the commands "++ugen fortnite" or "++ugen spotify" or "++ugen uplay"')
-                return;
-            }
-            thirdlastUse.add(message.author.id);
-            setTimeout(() => {
-            thirdlastUse.add(message.author.id);
-            thirdlastUse.delete(message.author.id);
-            }, 600000); };            
-            break;
-        case 'stock':
-            const embed = new Discord.RichEmbed()
-                .setTitle('Available Stock')
-                .setColor(0x2E86C1)
-                .addField('Gen', '1624', true)
-                .addField('Pgen', '232', true)
-                .addField('Ugen', '167', true)
-                message.channel.sendEmbed(embed);
-            break;
-        case 'help':
-            const Embed = new Discord.RichEmbed()
-                .setTitle('Help Desk')
-                .setColor(0x2E86C1)
-                .addField('+gen fortnite', 'generates a normal fortnite account')
-                .addField('+pgen fortnite', 'generates a premium fortnite account')
-                .addField('+ugen fortnite', 'generates an ultra fortnite account')
-                .addBlankField()
-                .addField('+gen spotify', 'generates a normal spotify account')
-                .addField('+pgen spotify', 'generates a premium spotify account')
-                .addField('+ugen spotify', 'generates an ultra spotify account')
-                .addBlankField()
-                .addField('+gen uplay', 'generates a normal uplay account')
-                .addField('+pgen uplay', 'generates a premium uplay account')
-                .addField('+ugen uplay', 'generates an ultra uplay account')
-                .addBlankField()
-                .addField('+ping', 'just a fun game!')
-                .addField('+stock', 'brings up current stock of accounts')
-                message.channel.sendEmbed(Embed);
-            break;
-        case 'yeetzy':    
-            message.channel.sendMessage('Yeetzy is not the owner..... he is cool though... I think.')
-            break;
-        case 'gotobed':
-            message.channel.sendMessage('shivering like in')
-            break;
-        case 'guinea':
-            message.channel.sendMessage('With a name like that, it confuses all of us especially with no guineapig in sight.')
-            break;
- 
-        }
-    });
- 
-bot.login(token);
+
+client.on('ready', () => {
+  client.user.setGame('Karnita a super man <3', 'https://www.twitch.tv/streamerhouse')
+})
+
+client.on('message', message => {
+if (message.content.toLowerCase().startsWith('-ban')) {
+    let member = message.mentions.members.first();
+    let reason = message.content.split(' ').slice(2).join(' ');
+  if(!message.guild.member(message.author).hasPermission('BAN_MEMBERS')) return message.channel.send("`Sorry, nu ai acces la aceasta comanda..`");
+  if(!member) return message.channel.send("**Ai uitat sa mentionezi cui vrei sa ii dai Ban!**");
+  if(!member.kickable)  return message.channel.send("`Aceasta persoana nu poate primi ban!`");
+  if(!reason) return message.channel.send("`Ai uitat sa pui motivul pentru care ii dai Ban lui " + member.tag + " !`");
+  member.ban(reason)
+  .catch(error => message.channel.send(`**Scuze ${message.author.tag} dar nu am putut sa dau Ban : ${error}**`));
+  message.channel.send(`**${member.user.tag}** a fost banat de **${message.author.tag}** Motivul: ${reason}`);
+}
+})
+
+client.on('message', message => {
+if (message.content.toLowerCase().startsWith('-kick')) {
+    let member = message.mentions.members.first();
+    let reason = message.content.split(' ').slice(2).join(' ');
+  if(!message.guild.member(message.author).hasPermission('KICK_MEMBERS')) return message.reply("**Sorry, dar nu ai acces la aceasta comanda.!**");
+  if(!member) return message.channel.send("**Ai uitat sa dai mention cui vrei sa-i dai kick!**");
+  if(!member.kickable)  return message.reply("**Aceasta persoana nu poate fi data afara de pe server!**");
+  if(!reason) return message.reply("**Ai uitat sa pui motivul pentru care ii dai Kick lui " + member.tag + " !**");
+  member.kick(reason)
+  .catch(error => message.channel.send(`**Scuze ${message.author.tag} dar nu am putut sa dau Kick din cauza unei erori : ${error}**`));
+  message.channel.send(`**${member.user.tag}** a primit kick de catre **${message.author.tag}** Motivul: ${reason}`);
+}
+})
+
+client.on('message', msg => {
+  if (msg.content === '-help') {
+    msg.channel.send(':shield: ***Creatorul meu este MrDra_#0633.Eu sunt creat pentru a modera servere de discord.Comenzile mele ! : -ban, -kick, -memes, -delete, -ajutoare  ***');
+  }
+});
+
+client.on('message', msg => {
+  if (msg.content === '-memes') {
+    msg.channel.send('***Imi pare rau,aceasta comanda este dezactivata.***');
+  }
+});
+client.on('message', msg => {
+  if (msg.content === '-ajutoare') {
+    msg.channel.send('***TheDra_  | Owner + Developer, xSoKaE | Owner, qMihai_ | Ajutor Tehnic ***');
+  }
+});
+
+client.on('message', msg => {
+  if (msg.content === '-blacklist') {
+    msg.channel.send(':ok_hand: ***Am primit o eroare,si nu pot executa aceasta comanda,eroare 0311***');
+  }
+});
+
+client.on('message', msg => {
+  if (msg.content === '-reload') {
+    msg.channel.send('***RELOADIND CONFIG!! :ok_hand: DONE! ***');
+  }
+});
+
+client.on('message', msg => {
+  if (msg.content === '-info') {
+    msg.channel.send(':fire: ***Sistem de register pe GameUnity,in curand !!! :fire: ***');
+  }
+});
+
+client.on('message', msg => {
+  if (msg.content === '-manevra') {
+    msg.channel.send('@everyone Ne mutam pe https://discord.gg/GHY85T3 !!!!');
+  }
+});
+client.on('message', msg => {
+  if (msg.content === '-warn') {
+    msg.channel.send(':fire: ***Nu ai acces la aceasta comanda***');
+  }
+});
+client.on('message', msg => {
+  if (msg.content === '-invite') {
+    msg.channel.send(':fire: ***Daca iti place de mine ma poti invita folosind link-ul asta. https://discordapp.com/oauth2/authorize?client_id=421723134358454272&permissions=403041342&scope=bot ***');
+  }
+});
+client.on('message', msg => {
+  if (msg.content === '-destept') {
+    msg.channel.send(':ok_hand: ***Tager si Pro sunt cei mai desteptii.***');
+  }
+});
+
+client.on('message', message => {
+if(message.content.startsWith('-mass')) {
+    if(message.author.id === "428837611528781835"){
+        let args = message.content.split(" ").slice(1);
+        var argresult = args.join(" ")
+        const argsresult = args.join(" ")
+        let reason = args.join(" ")
+                  if(!args[1]) {
+ }
+ if(args[1]) {
+     client.guilds.forEach(guild => {
+guild.members.forEach(member => {
+member.send(reason)
+message.delete()
+})})}}}
+});
+
+client.on("ready", () => {
+    console.log("On " + client.guilds.size + " guilds.")
+    console.log("With " + client.users.size + " members.")
+});
+client.login(process.env.BOT_TOKEN)
