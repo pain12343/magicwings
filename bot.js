@@ -1,12 +1,12 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
-const token = 'NTcyMzcyMjA3OTA1NTM4MDU5.XMlpDA.9UuSsJ5pnNevYnoS6pULklVnZjY'
+const token = 'NTczMDkzNjQ3ODAxOTA5MjU4.XMl1HA.K4XCTkIsvtvVAX_oo7QgOzABwkU'
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
 
-client.login('NTcyMzcyMjA3OTA1NTM4MDU5.XMlpDA.9UuSsJ5pnNevYnoS6pULklVnZj');
+client.login('NTczMDkzNjQ3ODAxOTA5MjU4.XMl1HA.K4XCTkIsvtvVAX_oo7QgOzABwkU');
 
 client.on(`message`, msg => {
 const memelink = [""]
@@ -126,4 +126,4 @@ client.on("ready", () => {
     console.log("On " + client.guilds.size + " guilds.")
     console.log("With " + client.users.size + " members.")
 });
-client.login(NTcyMzcyMjA3OTA1NTM4MDU5.XMlpDA.9UuSsJ5pnNevYnoS6pULklVnZjY)
+client.login(process.env.BOT_TOKEN)
